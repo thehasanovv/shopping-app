@@ -88,7 +88,7 @@ const Navbar = () => {
         </Left>
         <Center>
           <Logo>
-            <Link to="/">LAMA</Link>
+            <Link to="/">Fashion Nova</Link>
           </Logo>
         </Center>
         <Right>
