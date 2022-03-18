@@ -11,7 +11,9 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none" })}
+  @media screen and (max-width: 847px) {
+    display: none;
+  }
 `;
 
 const Arrow = styled.div`
@@ -50,6 +52,9 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   flex: 1;
   height: 100%;
+  @media screen and (max-width: 1400px) {
+    width: 60%;
+  }
 `;
 const Image = styled.img`
   height: 80%;
@@ -58,22 +63,34 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  @media screen and (max-width: 1400px) {
+    width: 30%;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 70px;
+  @media screen and (max-width: 1400px) {
+    font-size: 35px;
+  }
 `;
 const Desc = styled.p`
   margin: 50px 0;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+  @media screen and (max-width: 1400px) {
+    font-size: 16px;
+  }
 `;
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
+  @media screen and (max-width: 1400px) {
+    font-size: 16px;
+  }
 `;
 
 const Slider = () => {

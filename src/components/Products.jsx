@@ -23,19 +23,25 @@ const Products = ({ cat, filters, sort }) => {
     } else {
       setProducts(popularProducts);
     }
-  }, [cat]);
+  }, [cat, setProducts]);
 
   useEffect(() => {
     cat &&
       setFilteredProducts(
         products.filter((item) =>
-          Object.entries(filters).every(([key, value]) =>
-            item[key].includes(value)
-          )
+          Object.entries(filters).every(([key, value]) => {
+            if (filters[key] === "All") {
+              // console.log("all filters");
+              return filters[key];
+            } else {
+              // console.log(key, value);
+              return item[key].includes(value);
+            }
+          })
         )
       );
   }, [products, filters, sort]);
-
+  // item[key].includes(value) && item.length === products.length
   useEffect(() => {
     if (sort === "newest") {
       setFilteredProducts((prev) =>

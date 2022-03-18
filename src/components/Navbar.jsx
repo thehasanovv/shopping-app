@@ -6,6 +6,48 @@ import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlin
 import { mobile } from "../Responsive";
 import { Link } from "react-router-dom";
 
+const Navbar = () => {
+  return (
+    <Container className="container">
+      <Wrapper>
+        <Left>
+          <Language>EN</Language>
+          <SearchContainer>
+            <Input />
+            <SearchIcon style={{ color: "gray", fontSize: "16px" }} />
+          </SearchContainer>
+        </Left>
+        <Center>
+          <Logo>
+            <Link to="/">Fashion Nova</Link>
+          </Logo>
+        </Center>
+        <SearchContainerMobile>
+          <SearchIcon style={{ color: "black", fontSize: "28px" }} />
+        </SearchContainerMobile>
+        <Right>
+          <Link to="/register">
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link to="/login">
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
+
+          <MenuItem>
+            <Link to="/cart">
+              <Badge badgeContent={1} color="primary">
+                <ShoppingBasketOutlinedIcon />
+              </Badge>
+            </Link>
+          </MenuItem>
+        </Right>
+      </Wrapper>
+    </Container>
+  );
+};
+
+export default Navbar;
+
 const Container = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })}
@@ -23,6 +65,7 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({ display: "none" })}
 `;
 
 const Language = styled.span`
@@ -38,6 +81,13 @@ const SearchContainer = styled.div`
   margin-left: 25px;
   padding: 5px;
 `;
+const SearchContainerMobile = styled.div`
+  display: none;
+  ${mobile({ display: "block" })};
+  & svg {
+    padding-top: 2px;
+  }
+`;
 
 const Input = styled.input`
   border: none;
@@ -47,11 +97,12 @@ const Input = styled.input`
 const Center = styled.div`
   flex: 1;
   text-align: center;
+  ${mobile({ textAlign: "left" })}
 `;
 
 const Logo = styled.h1`
   font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
+  ${mobile({ fontSize: "24px", marginLeft: "5px" })}
 
   a {
     color: #000;
@@ -65,7 +116,6 @@ const Right = styled.div`
   a {
     color: #000;
   }
-  ${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
 const MenuItem = styled.div`
@@ -73,42 +123,10 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+
+  & {
+    a {
+      ${mobile({ marginRight: "13px" })}
+    }
+  }
 `;
-
-const Navbar = () => {
-  return (
-    <Container className="container">
-      <Wrapper>
-        <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input />
-            <SearchIcon style={{ color: "gray", fontSize: "16px" }} />
-          </SearchContainer>
-        </Left>
-        <Center>
-          <Logo>
-            <Link to="/">Fashion Nova</Link>
-          </Logo>
-        </Center>
-        <Right>
-          <Link to="/register">
-            <MenuItem>REGISTER</MenuItem>
-          </Link>
-          <Link to="/login">
-            <MenuItem>SIGN IN</MenuItem>
-          </Link>
-          <MenuItem>
-            <Link to="/cart">
-              <Badge badgeContent={1} color="primary">
-                <ShoppingBasketOutlinedIcon />
-              </Badge>
-            </Link>
-          </MenuItem>
-        </Right>
-      </Wrapper>
-    </Container>
-  );
-};
-
-export default Navbar;
